@@ -18,7 +18,7 @@
 <body>
 
     <h1>Rock Paper Scissors Simulator</h1>
-    <div class="container px-4 text-center mt-3 align-self-center">
+    <div class="container px-4 text-center mt-3 align-self-center" >
 
         <div id="control-bar" class="row gx-5">
             <div class="col">
@@ -40,8 +40,8 @@
             </div>
             <div class="col">
                 <input value="10" oninput="handleSlider()" type="range" class="form-range" id="choose-initial-objects"
-                    min="10" max="100">
-                <label id="choose-initial-objects-label" for="choose-initial-objects" class="form-label">10
+                    min="30" max="300">
+                <label id="choose-initial-objects-label" for="choose-initial-objects" class="form-label">30
                     objects</label>
             </div>
 
@@ -60,7 +60,7 @@
     </div>
 
 
-    <div class="playground" id="playground">
+    <div class="playground" id="playground" onclick="onPlaygroundClick(event)">
 
     </div>
 </body>

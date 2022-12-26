@@ -11,6 +11,8 @@ var objectCount = {
     scissors: 0
 }
 
+var isGame = 0;
+
 var objects = ["rock", "paper", "scissors"];
 
 function getObjectToImage(object) {
@@ -67,6 +69,7 @@ function spawnObject(object, position = null) {
 }
 
 function startNewGame(){
+    isGame = 1;
     var initialObjects = document.getElementById("choose-initial-objects").value;
     // clear playground
     var playground = document.getElementById("playground");
@@ -151,7 +154,6 @@ function checkCollisions() {
                     continue;
                 }
                 var position = [objects[i].style.left, objects[i].style.top];
-                console.log("postion", position);
                 var winner = getWinner(object1, object2);
                 if (winner == object1) {
                     removeObject(objects[j], object2);
@@ -185,19 +187,41 @@ function getWinner(object1, object2) {
     }
 }
 
+function resetGame() {
+    isGame = 0;
+    var playground = document.getElementById("playground");
+    playground.innerHTML = "";
+    objectIndex = {
+        rock: 0,
+        paper: 0,
+        scissors: 0
+    }
+    objectCount = {
+        rock: 0,
+        paper: 0,
+        scissors: 0
+    }
+    
+}
+
 function checkWin() { 
     rockCount = objectCount["rock"];
     paperCount = objectCount["paper"];
     scissorsCount = objectCount["scissors"];
+    var winner = null;
     if (rockCount == 0 && paperCount == 0) {
-        alert("Scissors win!");
+        winner = "scissors";
     }
     if (rockCount == 0 && scissorsCount == 0) {
-        alert("Paper win!");
+        winner = "paper";
     }
 
     if (paperCount == 0 && scissorsCount == 0) {
-        alert("Rock win!");
+        winner = "rock";
+    }
+    if (winner != null) {
+        alert("Winner is " + winner);
+        resetGame();
     }
 }
 
@@ -215,4 +239,14 @@ function gameLoop() {
     checkCollisions();
     updateScore();
     checkWin();
+}
+
+function onPlaygroundClick (e) {
+    console.log("click")
+    console.log(e.pageX, e.pageY)
+    if (isGame === 1) {
+        // spawn a random object
+        var randomObject = Math.floor(Math.random() * 3);
+        spawnObject(objects[randomObject], [e.pageX + "px", e.pageY + "px"]);
+    }
 }
