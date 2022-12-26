@@ -191,16 +191,13 @@ function checkWin() {
     scissorsCount = objectCount["scissors"];
     if (rockCount == 0 && paperCount == 0) {
         alert("Scissors win!");
-        startNewGame();
     }
     if (rockCount == 0 && scissorsCount == 0) {
         alert("Paper win!");
-        startNewGame();
     }
 
     if (paperCount == 0 && scissorsCount == 0) {
         alert("Rock win!");
-        startNewGame();
     }
 }
 
