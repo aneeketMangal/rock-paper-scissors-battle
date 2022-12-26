@@ -15,6 +15,8 @@ var isGame = 0;
 
 var objects = ["rock", "paper", "scissors"];
 
+var refreshIntervalId;
+
 function getObjectToImage(object) {
     if (object == "rock") {
         return "img/rock.png";
@@ -98,7 +100,7 @@ function startNewGame(){
         }
     }
     
-    setInterval(gameLoop, 100);
+    refreshIntervalId = setInterval(gameLoop, 100);
 }
 
 function makeNewPosition(){
@@ -202,6 +204,7 @@ function resetGame() {
         scissors: 0
     }
     
+    clearInterval(refreshIntervalId);
 }
 
 function checkWin() { 
