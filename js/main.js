@@ -124,7 +124,7 @@ function animateDiv(id){
     // $(`#${id}`).css("position", "fixed");
     
     var newq = makeNewPosition();
-    $(id).animate({ top: newq[0], left: newq[1] }, 10000, function(){
+    $(id).animate({ top: newq[0], left: newq[1] }, 8000, function(){
       animateDiv(id);        
     });
     
